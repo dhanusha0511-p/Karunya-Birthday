@@ -1,416 +1,757 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Happy 10th Birthday Karunya! ✨</title>
-    <meta name="description" content="A magical fairytale 10th birthday scrapbook for Karunya! 💕">
-    
+
+    <title>✨ Happy Birthday Karunya! ✨</title>
+
+    <meta name="description" content="A magical birthday storybook for Karunya! 💕">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@700&family=Fredoka:wght@600;700&family=Outfit:wght@600;700;800&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@700&family=Fredoka:wght@600;700&family=Outfit:wght@600;700;800&family=Quicksand:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom Styles -->
+
+    <!-- Your CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <!-- Fixed Decorative Ribbon Bows in Upper Corners -->
-    <div class="corner-bow bow-top-left" title="Birthday Ribbon">🎀</div>
-    <div class="corner-bow bow-top-right" title="Birthday Ribbon">🎀</div>
+    <!-- =========================================================
+     DECORATIONS
+========================================================= -->
 
-    <!-- Fixed Bottom Cloud Corners -->
+    <div class="corner-bow bow-top-left">🎀</div>
+    <div class="corner-bow bow-top-right">🎀</div>
+
     <div class="cloud-corner cloud-bottom-left">
         <div class="cloud-graphics">🏰✨</div>
     </div>
+
     <div class="cloud-corner cloud-bottom-right">
         <div class="cloud-graphics">🌸🐰👑</div>
     </div>
 
-    <!-- Ambient Rosy Glow Orbs -->
     <div class="ambient-glow bg-orb-1"></div>
     <div class="ambient-glow bg-orb-2"></div>
     <div class="ambient-glow bg-orb-3"></div>
 
-    <!-- Canvas Background for Twinkling Stars, Floating Bubbles, & Fairy Dust -->
     <canvas id="magicCanvas"></canvas>
 
-    <!-- Page Transition Sparkle Overlay -->
+
+    <!-- =========================================================
+     FLOATING BUBBLES
+========================================================= -->
+
+    <div class="floating-bubbles-overlay">
+
+        <div class="sparkling-bubble bubble-dom-1">🫧✨</div>
+        <div class="sparkling-bubble bubble-dom-2">🫧💖</div>
+        <div class="sparkling-bubble bubble-dom-3">🫧🌟</div>
+        <div class="sparkling-bubble bubble-dom-4">🫧✨</div>
+        <div class="sparkling-bubble bubble-dom-5">🫧🌸</div>
+        <div class="sparkling-bubble bubble-dom-6">🫧👑</div>
+
+    </div>
+
+
+    <!-- =========================================================
+     PAGE TRANSITION
+========================================================= -->
+
     <div id="pageTransitionOverlay" class="page-transition-overlay">
+
         <div class="transition-sparkle-burst">
+
             <span class="t-icon i1">✨</span>
             <span class="t-icon i2">🫧</span>
             <span class="t-icon i3">🦋</span>
             <span class="t-icon i4">🌸</span>
             <span class="t-icon i5">👑</span>
+
         </div>
+
     </div>
 
-    <!-- Audio Element Placeholder -->
-    <audio id="bgMusic" src="birthday-song.mp3" preload="none" loop></audio>
 
-    <!-- Top Right Music Control Button (Present on Every Page) -->
+    <!-- =========================================================
+     🎵 MUSIC
+========================================================= -->
+
+    <audio id="bgMusic" src="music/birthday.mp3" preload="auto" loop>
+    </audio>
+
+
+    <!-- =========================================================
+     TOP MUSIC CONTROLS
+========================================================= -->
+
     <header class="top-nav-bar">
+
         <div class="magic-controls">
-            <button id="musicToggle" class="control-btn music-btn" title="Toggle Birthday Music" aria-label="Toggle Music">
+
+            <button id="musicToggle" class="control-btn music-btn" title="Toggle Birthday Music"
+                aria-label="Toggle Music">
+
                 <i class="fas fa-music"></i>
-                <span class="btn-tooltip" id="musicTooltip">Play Music 🎵</span>
+
+                <span class="btn-tooltip" id="musicTooltip">
+                    Play Music 🎵
+                </span>
+
             </button>
-            <button id="sparkleToggle" class="control-btn active" title="Toggle Wand Sparkles" aria-label="Toggle Fairy Dust">
+
+
+            <button id="sparkleToggle" class="control-btn active" title="Toggle Wand Sparkles"
+                aria-label="Toggle Fairy Dust">
+
                 <i class="fas fa-wand-magic-sparkles"></i>
-                <span class="btn-tooltip">Fairy Dust ✨</span>
+
+                <span class="btn-tooltip">
+                    Fairy Dust ✨
+                </span>
+
             </button>
+
         </div>
+
     </header>
 
 
-    <!-- MAIN APPLICATION CONTAINER (8 FULL-SCREEN PAGES) -->
+
+    <!-- =========================================================
+     MAIN APP
+========================================================= -->
+
     <main class="app-scenes">
 
-        <!-- ==========================================================================
-             ✨ PAGE 1 — MAGICAL WELCOME
-             ========================================================================== -->
+
+        <!-- =========================================================
+     PAGE 1
+========================================================= -->
+
         <section class="scene-page scene-welcome active" id="page-1">
+
             <div class="page-inner">
-                
+
                 <div class="scene-header text-center">
-                    <div class="header-crown-icon">👑</div>
-                    <h1 class="page-title welcome-title">Happy Birthday, Karunya! ✨</h1>
-                    <div class="header-ribbon-swash">
-                        <span class="swash-line">✧──────</span>
-                        <span class="swash-bow">🎀</span>
-                        <span class="swash-line">──────✧</span>
+
+                    <div class="header-crown-icon">
+                        👑
                     </div>
-                    <p class="welcome-subtitle">Welcome to your 10th Birthday Storybook 🌸</p>
+
+                    <h1 class="page-title welcome-title">
+                        Happy Birthday, Karunya! ✨
+                    </h1>
+
+                    <div class="header-ribbon-swash">
+
+                        <span class="swash-line">
+                            ✧──────
+                        </span>
+
+                        <span class="swash-bow">
+                            🎀
+                        </span>
+
+                        <span class="swash-line">
+                            ──────✧
+                        </span>
+
+                    </div>
+
+                    <p class="welcome-subtitle">
+                        Welcome to your Birthday Storybook 🌸
+                    </p>
+
                 </div>
 
-                <!-- Storybook Main Frame (Non-circular) -->
+
+                <!-- Main Photo -->
+
                 <div class="welcome-photo-stage">
+
                     <div class="decorative-storybook-frame">
-                        <!-- Floating corner decorations -->
+
                         <div class="frame-decor decor-tl">👑</div>
                         <div class="frame-decor decor-tr">✨</div>
                         <div class="frame-decor decor-bl">🌸</div>
                         <div class="frame-decor decor-br">🎀</div>
-                        <div class="frame-decor decor-floating-heart">💕</div>
-                        <div class="frame-decor decor-floating-bfly">🦋</div>
-                        
-                        <div class="photo-container">
-                            <img src="Karunya1.jpeg" alt="Karunya Birthday Girl" class="welcome-main-photo">
+
+                        <div class="frame-decor decor-floating-heart">
+                            💕
                         </div>
+
+                        <div class="frame-decor decor-floating-bfly">
+                            🦋
+                        </div>
+
+                        <div class="photo-container">
+
+                            <img src="Karunya1.jpeg" alt="Karunya" class="welcome-main-photo">
+
+                        </div>
+
                     </div>
+
                 </div>
 
-                <!-- Page 1 Action Button -->
+
+                <!-- Enter -->
+
                 <div class="action-footer text-center">
-                    <button class="magic-btn enter-btn" id="enterBtn" onclick="goToPage(2)">
+
+                    <button class="magic-btn enter-btn" id="enterBtn">
+
                         ✨ Enter ✨
+
                     </button>
+
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- ==========================================================================
-             📸 PAGE 2 — KARUNYA'S HAPPY MOMENTS
-             ========================================================================== -->
+
+        <!-- =========================================================
+     PAGE 2
+========================================================= -->
+
         <section class="scene-page scene-happy-moments" id="page-2">
-            
-            <!-- Floating Photo Bubble Memories (Karunya Photos inside floating bubbles) -->
+
             <div class="floating-photo-bubbles-wrapper">
+
                 <div class="photo-bubble bubble-1 float-anim-1">
-                    <img src="Karunya1.jpeg" alt="Karunya Memory Bubble">
+                    <img src="Karunya1.jpeg" alt="Memory">
                 </div>
+
                 <div class="photo-bubble bubble-2 float-anim-2">
-                    <img src="Karunya2.jpeg" alt="Karunya Memory Bubble">
+                    <img src="Karunya2.jpeg" alt="Memory">
                 </div>
+
                 <div class="photo-bubble bubble-3 float-anim-3">
-                    <img src="Karunya3.jpeg" alt="Karunya Memory Bubble">
+                    <img src="Karunya3.jpeg" alt="Memory">
                 </div>
+
                 <div class="photo-bubble bubble-4 float-anim-4">
-                    <img src="Karunya4.jpeg" alt="Karunya Memory Bubble">
+                    <img src="Karunya4.jpeg" alt="Memory">
                 </div>
+
             </div>
+
 
             <div class="page-inner">
 
                 <div class="scene-header text-center">
-                    <div class="header-crown-icon">👑</div>
-                    <h2 class="page-title">Karunya’s Happy Moments ✨</h2>
-                    <div class="header-ribbon-swash">
-                        <span class="swash-line">✧──────</span>
-                        <span class="swash-bow">🎀</span>
-                        <span class="swash-line">──────✧</span>
+
+                    <div class="header-crown-icon">
+                        👑
                     </div>
-                    <p class="page-subtitle">💕 A few little memories 💕</p>
+
+                    <h2 class="page-title">
+                        Happy Moments ✨
+                    </h2>
+
+                    <div class="header-ribbon-swash">
+
+                        <span class="swash-line">
+                            ✧──────
+                        </span>
+
+                        <span class="swash-bow">🎀</span>
+
+                        <span class="swash-line">
+                            ──────✧
+                        </span>
+
+                    </div>
+
+                    <p class="page-subtitle">
+                        💕 Little memories 💕
+                    </p>
+
                 </div>
 
-                <!-- Scrapbook Gallery Container with All 8 Photos -->
+
                 <div class="scrapbook-gallery-container">
+
                     <div class="gallery-grid-8">
-                        
-                        <!-- Card 1: Scalloped Pink Border -->
-                        <div class="scrapbook-card card-tilt-1" onclick="handleCardClick(event, this)">
+
+
+                        <!-- PHOTO 1 -->
+
+                        <div class="scrapbook-card card-tilt-1" onclick="handleCardClick(event,this)">
+
                             <div class="card-decor decor-ribbon-tl">🎀</div>
                             <div class="card-decor decor-flower-br">🌸</div>
                             <div class="card-decor decor-star-tr">✨</div>
+
                             <div class="scrapbook-photo-frame frame-scallop-pink">
+
                                 <img src="Karunya1.jpeg" alt="Karunya Photo 1" class="img-crop-1">
+
                             </div>
+
                         </div>
 
-                        <!-- Card 2: Wavy Blossom Border -->
-                        <div class="scrapbook-card card-tilt-2" onclick="handleCardClick(event, this)">
+
+                        <!-- PHOTO 2 -->
+
+                        <div class="scrapbook-card card-tilt-2" onclick="handleCardClick(event,this)">
+
                             <div class="card-decor decor-crown-tc">👑</div>
                             <div class="card-decor decor-flower-bl">🌸</div>
                             <div class="card-decor decor-star-tl">💫</div>
+
                             <div class="scrapbook-photo-frame frame-flower-blossom">
+
                                 <img src="Karunya2.jpeg" alt="Karunya Photo 2" class="img-crop-2">
+
                             </div>
+
                         </div>
 
-                        <!-- Card 3: Golden Starburst Glow -->
-                        <div class="scrapbook-card card-tilt-3" onclick="handleCardClick(event, this)">
+
+                        <!-- PHOTO 3 -->
+
+                        <div class="scrapbook-card card-tilt-3" onclick="handleCardClick(event,this)">
+
                             <div class="card-decor decor-bow-tc">🎀</div>
                             <div class="card-decor decor-star-bl">✨</div>
                             <div class="card-decor decor-flower-br">🌺</div>
+
                             <div class="scrapbook-photo-frame frame-golden-starburst">
+
                                 <img src="Karunya3.jpeg" alt="Karunya Photo 3" class="img-crop-3">
+
                             </div>
+
                         </div>
 
-                        <!-- Card 4: Fairy Ribbon Trim -->
-                        <div class="scrapbook-card card-tilt-4" onclick="handleCardClick(event, this)">
+
+                        <!-- PHOTO 4 -->
+
+                        <div class="scrapbook-card card-tilt-4" onclick="handleCardClick(event,this)">
+
                             <div class="card-decor decor-ribbon-tr">🎀</div>
                             <div class="card-decor decor-heart-br">💖</div>
                             <div class="card-decor decor-star-tl">🌟</div>
+
                             <div class="scrapbook-photo-frame frame-fairy-ribbon">
+
                                 <img src="Karunya4.jpeg" alt="Karunya Photo 4" class="img-crop-4">
+
                             </div>
+
                         </div>
 
-                        <!-- Card 5: Lavender Lace Frame -->
-                        <div class="scrapbook-card card-tilt-5" onclick="handleCardClick(event, this)">
+
+                        <!-- PHOTO 5 -->
+
+                        <div class="scrapbook-card card-tilt-5" onclick="handleCardClick(event,this)">
+
                             <div class="card-decor decor-bfly-tr">🦋</div>
                             <div class="card-decor decor-flower-tl">🌸</div>
                             <div class="card-decor decor-star-bl">✨</div>
+
                             <div class="scrapbook-photo-frame frame-lavender-lace">
+
                                 <img src="Karunya5.jpeg" alt="Karunya Photo 5" class="img-crop-5">
+
                             </div>
+
                         </div>
 
-                        <!-- Card 6: Sparkle Glitter Frame -->
-                        <div class="scrapbook-card card-tilt-6" onclick="handleCardClick(event, this)">
+
+                        <!-- PHOTO 6 -->
+
+                        <div class="scrapbook-card card-tilt-6" onclick="handleCardClick(event,this)">
+
                             <div class="card-decor decor-flower-tr">🌺</div>
                             <div class="card-decor decor-star-tl">✨</div>
                             <div class="card-decor decor-bfly-bl">🦋</div>
+
                             <div class="scrapbook-photo-frame frame-sparkle-glitter">
+
                                 <img src="Karunya6.jpeg" alt="Karunya Photo 6" class="img-crop-6">
+
                             </div>
+
                         </div>
 
-                        <!-- Card 7: Sweet Heart Frame -->
-                        <div class="scrapbook-card card-tilt-7" onclick="handleCardClick(event, this)">
+
+                        <!-- PHOTO 7 -->
+
+                        <div class="scrapbook-card card-tilt-7" onclick="handleCardClick(event,this)">
+
                             <div class="card-decor decor-star-tr">💫</div>
                             <div class="card-decor decor-ribbon-bl">🎀</div>
                             <div class="card-decor decor-flower-tl">🌸</div>
+
                             <div class="scrapbook-photo-frame frame-sweet-heart">
+
                                 <img src="Karunya7.jpeg" alt="Karunya Photo 7" class="img-crop-7">
+
                             </div>
+
                         </div>
 
-                        <!-- Card 8: Royal Crown Frame -->
-                        <div class="scrapbook-card card-tilt-8" onclick="handleCardClick(event, this)">
+
+                        <!-- PHOTO 8 -->
+
+                        <div class="scrapbook-card card-tilt-8" onclick="handleCardClick(event,this)">
+
                             <div class="card-decor decor-crown-tc">👑</div>
                             <div class="card-decor decor-heart-br">💖</div>
                             <div class="card-decor decor-star-tl">🌟</div>
+
                             <div class="scrapbook-photo-frame frame-royal-crown">
+
                                 <img src="Karunya8.jpeg" alt="Karunya Photo 8" class="img-crop-8">
+
                             </div>
+
                         </div>
 
                     </div>
+
                 </div>
 
-                <!-- Page 2 Navigation -->
+
                 <div class="action-footer page-nav-buttons">
-                    <button class="magic-btn secondary-btn" onclick="goToPage(1)">← Back</button>
-                    <button class="magic-btn" onclick="goToPage(3)">Next: Little Me 🌸 →</button>
+
+                    <button class="magic-btn secondary-btn" onclick="goToPage(1)">
+                        ← Back
+                    </button>
+
+                    <button class="magic-btn" onclick="goToPage(3)">
+                        Next 🌸 →
+                    </button>
+
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- ==========================================================================
-             🌸 PAGE 3 — LITTLE ME
-             ========================================================================== -->
+
+        <!-- =========================================================
+     PAGE 3
+========================================================= -->
+
         <section class="scene-page scene-little-me" id="page-3">
+
             <div class="page-inner">
 
                 <div class="scene-header text-center">
-                    <div class="header-crown-icon">🌸</div>
-                    <h2 class="page-title">Little Me 🌸</h2>
-                    <p class="page-subtitle">Sweet little memories 💕</p>
+
+                    <div class="header-crown-icon">
+                        🌸
+                    </div>
+
+                    <h2 class="page-title">
+                        Little Me 🌸
+                    </h2>
+
+                    <p class="page-subtitle">
+                        Sweet little memories 💕
+                    </p>
+
                 </div>
 
-                <!-- Childhood Scrapbook Layout -->
+
                 <div class="childhood-scrapbook-stage">
-                    
-                    <!-- Left Teddy Bear & Cloud Decor -->
+
                     <div class="scrapbook-decor-item decor-teddy-cloud">
-                        <img src="cute_teddy.jpg" alt="Cute Teddy Bear" class="teddy-img">
-                        <div class="cloud-speech">🧸 Sweet Karunya!</div>
+
+                        <img src="cute_teddy.jpg" alt="Cute Teddy" class="teddy-img">
+
+                        <div class="cloud-speech">
+                            🧸 Sweet Karunya!
+                        </div>
+
                     </div>
 
-                    <!-- Trio of Childhood Photos -->
+
                     <div class="childhood-photos-trio">
-                        
-                        <div class="polaroid-card polaroid-1" onclick="handleCardClick(event, this)">
+
+
+                        <div class="polaroid-card polaroid-1" onclick="handleCardClick(event,this)">
+
                             <div class="tape-strip tape-top-left"></div>
+
                             <div class="polaroid-frame">
-                                <img src="Karunya1.jpeg" alt="Karunya Childhood Photo 1">
+
+                                <img src="Karunya1.jpeg" alt="Karunya Childhood">
+
                             </div>
-                            <p class="polaroid-caption">Little Princess 👑</p>
+
+                            <p class="polaroid-caption">
+                                Little Princess 👑
+                            </p>
+
                         </div>
 
-                        <div class="polaroid-card polaroid-2" onclick="handleCardClick(event, this)">
+
+                        <div class="polaroid-card polaroid-2" onclick="handleCardClick(event,this)">
+
                             <div class="tape-strip tape-top-center"></div>
+
                             <div class="polaroid-frame">
-                                <img src="Karunya2.jpeg" alt="Karunya Childhood Photo 2">
+
+                                <img src="Karunya2.jpeg" alt="Karunya Childhood">
+
                             </div>
-                            <p class="polaroid-caption">Sweetest Smile ✨</p>
+
+                            <p class="polaroid-caption">
+                                Sweet Smile ✨
+                            </p>
+
                         </div>
 
-                        <div class="polaroid-card polaroid-3" onclick="handleCardClick(event, this)">
+
+                        <div class="polaroid-card polaroid-3" onclick="handleCardClick(event,this)">
+
                             <div class="tape-strip tape-top-right"></div>
+
                             <div class="polaroid-frame">
-                                <img src="Karunya3.jpeg" alt="Karunya Childhood Photo 3">
+
+                                <img src="Karunya3.jpeg" alt="Karunya Childhood">
+
                             </div>
-                            <p class="polaroid-caption">Pure Joy 🌸</p>
+
+                            <p class="polaroid-caption">
+                                Pure Joy 🌸
+                            </p>
+
                         </div>
 
                     </div>
 
-                    <!-- Floating childhood accents -->
+
                     <div class="floating-accents">
+
                         <span class="acc-item acc-1">🎀</span>
                         <span class="acc-item acc-2">🌸</span>
                         <span class="acc-item acc-3">🦋</span>
                         <span class="acc-item acc-4">🫧</span>
                         <span class="acc-item acc-5">☁️</span>
                         <span class="acc-item acc-6">✨</span>
+
                     </div>
 
                 </div>
 
-                <!-- Page 3 Navigation -->
+
                 <div class="action-footer page-nav-buttons">
-                    <button class="magic-btn secondary-btn" onclick="goToPage(2)">← Back</button>
-                    <button class="magic-btn" onclick="goToPage(4)">Next: Special Moments 💕 →</button>
+
+                    <button class="magic-btn secondary-btn" onclick="goToPage(2)">
+                        ← Back
+                    </button>
+
+                    <button class="magic-btn" onclick="goToPage(4)">
+                        Next 💕 →
+                    </button>
+
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- ==========================================================================
-             💕 PAGE 4 — SPECIAL MOMENTS
-             ========================================================================== -->
+
+        <!-- =========================================================
+     PAGE 4
+========================================================= -->
+
         <section class="scene-page scene-special-moments" id="page-4">
+
             <div class="page-inner">
 
                 <div class="scene-header text-center">
-                    <div class="header-crown-icon">💖</div>
-                    <h2 class="page-title">Special Moments 💕</h2>
-                    <p class="page-subtitle">Precious memories that bring a smile ✨</p>
+
+                    <div class="header-crown-icon">
+                        💖
+                    </div>
+
+                    <h2 class="page-title">
+                        Special Moments 💕
+                    </h2>
+
+                    <p class="page-subtitle">
+                        Precious memories ✨
+                    </p>
+
                 </div>
 
-                <!-- Featured Memory Layout (1 Center Main Photo + 2 Side Photos) -->
+
                 <div class="special-moments-stage">
-                    
-                    <!-- Side Photo Left -->
-                    <div class="featured-card side-card left-card" onclick="handleCardClick(event, this)">
-                        <div class="card-decor decor-ribbon-tl">🎀</div>
+
+
+                    <div class="featured-card side-card left-card" onclick="handleCardClick(event,this)">
+
+                        <div class="card-decor decor-ribbon-tl">
+                            🎀
+                        </div>
+
                         <div class="featured-photo-wrapper frame-flower-blossom">
-                            <img src="Karunya5.jpeg" alt="Karunya Special Moment 1">
+
+                            <img src="Karunya5.jpeg" alt="Special Moment">
+
                         </div>
-                        <span class="moment-tag">Shine Bright ✨</span>
+
+                        <span class="moment-tag">
+                            Shine Bright ✨
+                        </span>
+
                     </div>
 
-                    <!-- Main Glowing Center Photo -->
-                    <div class="featured-card center-card main-glowing-card" onclick="handleCardClick(event, this)">
-                        <div class="card-decor decor-crown-tc">👑</div>
-                        <div class="card-decor decor-star-tr">🌟</div>
-                        <div class="card-decor decor-flower-br">🌸</div>
-                        <div class="card-decor decor-bfly-bl">🦋</div>
-                        
+
+                    <div class="featured-card center-card main-glowing-card" onclick="handleCardClick(event,this)">
+
+                        <div class="card-decor decor-crown-tc">
+                            👑
+                        </div>
+
+                        <div class="card-decor decor-star-tr">
+                            🌟
+                        </div>
+
+                        <div class="card-decor decor-flower-br">
+                            🌸
+                        </div>
+
+                        <div class="card-decor decor-bfly-bl">
+                            🦋
+                        </div>
+
                         <div class="featured-photo-wrapper frame-glowing-magic">
-                            <img src="Karunya4.jpeg" alt="Karunya Featured Moment">
+
+                            <img src="Karunya4.jpeg" alt="Featured Moment">
+
                         </div>
-                        <span class="moment-tag center-tag">Sparkle Every Day 💕</span>
+
+                        <span class="moment-tag center-tag">
+                            Sparkle Every Day 💕
+                        </span>
+
                     </div>
 
-                    <!-- Side Photo Right -->
-                    <div class="featured-card side-card right-card" onclick="handleCardClick(event, this)">
-                        <div class="card-decor decor-star-tr">💫</div>
-                        <div class="featured-photo-wrapper frame-lavender-lace">
-                            <img src="Karunya6.jpeg" alt="Karunya Special Moment 2">
+
+                    <div class="featured-card side-card right-card" onclick="handleCardClick(event,this)">
+
+                        <div class="card-decor decor-star-tr">
+                            💫
                         </div>
-                        <span class="moment-tag">Sweet Memory 🌸</span>
+
+                        <div class="featured-photo-wrapper frame-lavender-lace">
+
+                            <img src="Karunya6.jpeg" alt="Special Moment">
+
+                        </div>
+
+                        <span class="moment-tag">
+                            Sweet Memory 🌸
+                        </span>
+
                     </div>
 
                 </div>
 
-                <!-- Page 4 Navigation -->
+
                 <div class="action-footer page-nav-buttons">
-                    <button class="magic-btn secondary-btn" onclick="goToPage(3)">← Back</button>
-                    <button class="magic-btn" onclick="goToPage(5)">Next: My Happy World 🌈 →</button>
+
+                    <button class="magic-btn secondary-btn" onclick="goToPage(3)">
+                        ← Back
+                    </button>
+
+                    <button class="magic-btn" onclick="goToPage(5)">
+                        Next 🌈 →
+                    </button>
+
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- ==========================================================================
-             🌈 PAGE 5 — MY HAPPY WORLD
-             ========================================================================== -->
+
+        <!-- =========================================================
+     PAGE 5
+========================================================= -->
+
         <section class="scene-page scene-happy-world" id="page-5">
+
             <div class="page-inner">
 
                 <div class="scene-header text-center">
-                    <div class="header-crown-icon">🌈</div>
-                    <h2 class="page-title">My Happy World 🌈</h2>
-                    <p class="page-subtitle">The cute things & moments that make Karunya smile 💕</p>
+
+                    <div class="header-crown-icon">
+                        🌈
+                    </div>
+
+                    <h2 class="page-title">
+                        My Happy World 🌈
+                    </h2>
+
+                    <p class="page-subtitle">
+                        Cute things that make Karunya smile 💕
+                    </p>
+
                 </div>
 
-                <!-- Playful Happy World Scrapbook Stage -->
+
                 <div class="happy-world-stage">
-                    
-                    <!-- Visual element card 1: Cute Unicorn -->
-                    <div class="world-card card-unicorn" onclick="handleCardClick(event, this)">
+
+
+                    <div class="world-card card-unicorn">
+
                         <div class="world-icon-wrap">
-                            <img src="cute_unicorn.jpg" alt="Cute Magical Unicorn" class="unicorn-img">
+
+                            <img src="cute_unicorn.jpg" alt="Cute Unicorn" class="unicorn-img">
+
                         </div>
-                        <div class="world-label">Magical Dreams 🦄</div>
+
+                        <div class="world-label">
+                            Magical Dreams 🦄
+                        </div>
+
                     </div>
 
-                    <!-- Photo Card 1: Karunya Photo 7 -->
-                    <div class="world-card card-photo" onclick="handleCardClick(event, this)">
+
+                    <div class="world-card card-photo" onclick="handleCardClick(event,this)">
+
                         <div class="scrapbook-photo-frame frame-sweet-heart">
-                            <img src="Karunya7.jpeg" alt="Karunya Happy World Photo">
+
+                            <img src="Karunya7.jpeg" alt="Karunya">
+
                         </div>
-                        <div class="world-label">Pure Joy 💕</div>
+
+                        <div class="world-label">
+                            Pure Joy 💕
+                        </div>
+
                     </div>
 
-                    <!-- Visual Elements Cluster -->
+
                     <div class="world-card card-toys-cluster">
+
                         <div class="cluster-emojis">
+
                             <span class="c-item">🌈</span>
                             <span class="c-item">🧸</span>
                             <span class="c-item">🦋</span>
@@ -418,191 +759,592 @@
                             <span class="c-item">🌸</span>
                             <span class="c-item">🫧</span>
                             <span class="c-item">✨</span>
+
                         </div>
-                        <div class="world-label">Happiness & Fun 🎉</div>
+
+                        <div class="world-label">
+                            Happiness & Fun 🎉
+                        </div>
+
                     </div>
 
-                    <!-- Photo Card 2: Karunya Photo 8 -->
-                    <div class="world-card card-photo" onclick="handleCardClick(event, this)">
+
+                    <div class="world-card card-photo" onclick="handleCardClick(event,this)">
+
                         <div class="scrapbook-photo-frame frame-royal-crown">
-                            <img src="Karunya8.jpeg" alt="Karunya Happy World Photo 2">
+
+                            <img src="Karunya8.jpeg" alt="Karunya">
+
                         </div>
-                        <div class="world-label">Star Princess 👑</div>
+
+                        <div class="world-label">
+                            Star Princess 👑
+                        </div>
+
                     </div>
 
                 </div>
 
-                <!-- Page 5 Navigation -->
+
                 <div class="action-footer page-nav-buttons">
-                    <button class="magic-btn secondary-btn" onclick="goToPage(4)">← Back</button>
-                    <button class="magic-btn" onclick="goToPage(6)">Next: My Dreams 🦋 →</button>
+
+                    <button class="magic-btn secondary-btn" onclick="goToPage(4)">
+                        ← Back
+                    </button>
+
+                    <button class="magic-btn" onclick="goToPage(6)">
+                        Next 🦋 →
+                    </button>
+
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- ==========================================================================
-             🦋 PAGE 6 — MY DREAMS
-             ========================================================================== -->
+
+        <!-- =========================================================
+     PAGE 6
+========================================================= -->
+
         <section class="scene-page scene-my-dreams" id="page-6">
+
             <div class="page-inner">
 
                 <div class="scene-header text-center">
-                    <div class="header-crown-icon">🏰</div>
-                    <h2 class="page-title">My Dreams 🦋</h2>
-                    <p class="page-subtitle">A fairy-tale world where wishes come true ✨</p>
+
+                    <div class="header-crown-icon">
+                        🏰
+                    </div>
+
+                    <h2 class="page-title">
+                        My Dreams 🦋
+                    </h2>
+
+                    <p class="page-subtitle">
+                        A magical world ✨
+                    </p>
+
                 </div>
 
-                <!-- Dreamland Stage -->
+
                 <div class="dreamland-stage">
-                    
-                    <!-- Floating Cloud Dreams -->
+
+
                     <div class="dream-cloud cloud-1 float-anim-1">
-                        <span class="cloud-sparkle">✨</span>
-                        <p class="dream-text">Dream big ✨</p>
+
+                        <span class="cloud-sparkle">
+                            ✨
+                        </span>
+
+                        <p class="dream-text">
+                            Dream big ✨
+                        </p>
+
                     </div>
+
 
                     <div class="dream-cloud cloud-2 float-anim-2">
-                        <span class="cloud-sparkle">💕</span>
-                        <p class="dream-text">Smile always 💕</p>
+
+                        <span class="cloud-sparkle">
+                            💕
+                        </span>
+
+                        <p class="dream-text">
+                            Smile always 💕
+                        </p>
+
                     </div>
+
 
                     <div class="dream-cloud cloud-3 float-anim-3">
-                        <span class="cloud-sparkle">🌟</span>
-                        <p class="dream-text">Keep shining 🌟</p>
+
+                        <span class="cloud-sparkle">
+                            🌟
+                        </span>
+
+                        <p class="dream-text">
+                            Keep shining 🌟
+                        </p>
+
                     </div>
 
-                    <!-- Fairytale Castle Centerpiece -->
+
                     <div class="fairytale-castle-card">
-                        <div class="castle-graphic">🏰</div>
-                        <div class="moon-graphic">🌙⭐</div>
-                        <div class="rainbow-arc">🌈</div>
-                        <div class="castle-stars">✨ 🦋 🌸 🫧</div>
+
+                        <div class="castle-graphic">
+                            🏰
+                        </div>
+
+                        <div class="moon-graphic">
+                            🌙⭐
+                        </div>
+
+                        <div class="rainbow-arc">
+                            🌈
+                        </div>
+
+                        <div class="castle-stars">
+                            ✨ 🦋 🌸 🫧
+                        </div>
+
                     </div>
 
                 </div>
 
-                <!-- Page 6 Navigation -->
+
                 <div class="action-footer page-nav-buttons">
-                    <button class="magic-btn secondary-btn" onclick="goToPage(5)">← Back</button>
-                    <button class="magic-btn" onclick="goToPage(7)">Next: Birthday Wish 💌 →</button>
+
+                    <button class="magic-btn secondary-btn" onclick="goToPage(5)">
+                        ← Back
+                    </button>
+
+                    <button class="magic-btn" onclick="goToPage(7)">
+                        Next 💌 →
+                    </button>
+
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- ==========================================================================
-             💌 PAGE 7 — SPECIAL BIRTHDAY MESSAGE
-             ========================================================================== -->
+
+        <!-- =========================================================
+     PAGE 7
+========================================================= -->
+
         <section class="scene-page scene-birthday-wish" id="page-7">
+
             <div class="page-inner">
 
                 <div class="scene-header text-center">
-                    <div class="header-crown-icon">💌</div>
-                    <h2 class="page-title">A Little Birthday Wish 💌</h2>
-                    <p class="page-subtitle">A magical letter written just for you 💖</p>
+
+                    <div class="header-crown-icon">
+                        💌
+                    </div>
+
+                    <h2 class="page-title">
+                        A Little Birthday Wish 💌
+                    </h2>
+
+                    <p class="page-subtitle">
+                        A little wish just for you 💖
+                    </p>
+
                 </div>
 
-                <!-- Magical Envelope & Letter Stage -->
+
                 <div class="birthday-letter-stage">
-                    
+
                     <div class="magic-envelope-card" id="envelopeCard">
-                        
-                        <!-- Envelope Header Flap decoration -->
+
                         <div class="envelope-top-seal">
-                            <span class="seal-icon">🎀</span>
+
+                            <span class="seal-icon">
+                                🎀
+                            </span>
+
                         </div>
 
-                        <!-- Inner Letter Body -->
+
                         <div class="letter-paper">
+
                             <div class="letter-header">
-                                <span class="letter-stamp">👑 10th Birthday</span>
-                                <h3>Dearest Karunya, 🌸</h3>
+
+                                <span class="letter-stamp">
+                                    👑 Birthday
+                                </span>
+
+                                <h3>
+                                    Dearest Karunya, 🌸
+                                </h3>
+
                             </div>
 
-                            <!-- Editable Birthday Message Area -->
-                            <div class="letter-body-editable" id="birthdayMessageArea" contenteditable="true" title="Click to edit message">Happy Birthday, Karunya! 💕
 
-May your 10th birthday be filled with endless magic, laughter, sweet surprises, and joy! Keep smiling and shining like the brightest star in the sky. ✨🌸🎂</div>
+                            <div class="letter-body-editable" id="birthdayMessageArea" contenteditable="true">
+
+                                Happy Birthday, Karunya! 💕
+
+                                May your day be filled with magic, laughter, sweet surprises and lots of happiness! Keep
+                                smiling and shining like a little star. ✨🌸🎂
+
+                            </div>
+
 
                             <div class="letter-footer">
-                                <span class="letter-sig">With all my love & fairy wishes 💕✨</span>
+
+                                <span class="letter-sig">
+                                    With lots of love 💕✨
+                                </span>
+
                             </div>
+
                         </div>
 
+
                         <div class="letter-edit-hint">
-                            <span>✏️ Tip: You can click the text above to edit your custom message!</span>
+                            ✏️ Click the message to edit it!
                         </div>
 
                     </div>
 
                 </div>
 
-                <!-- Page 7 Navigation -->
+
                 <div class="action-footer page-nav-buttons">
-                    <button class="magic-btn secondary-btn" onclick="goToPage(6)">← Back</button>
-                    <button class="magic-btn" onclick="goToPage(8)">Next: Final Page 🎀 →</button>
+
+                    <button class="magic-btn secondary-btn" onclick="goToPage(6)">
+                        ← Back
+                    </button>
+
+                    <button class="magic-btn" onclick="goToPage(8)">
+                        Next 🎀 →
+                    </button>
+
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- ==========================================================================
-             🎀 PAGE 8 — FINAL PAGE
-             ========================================================================== -->
+
+        <!-- =========================================================
+     PAGE 8
+========================================================= -->
+
         <section class="scene-page scene-final-page" id="page-8">
+
             <div class="page-inner">
 
                 <div class="scene-header text-center">
-                    <div class="header-crown-icon">👑</div>
-                    <h2 class="page-title grand-title">Keep Shining, Karunya! ✨</h2>
-                    <p class="page-subtitle">Wishing you the happiest 10th Birthday ever! 🎂💖</p>
+
+                    <div class="header-crown-icon">
+                        👑
+                    </div>
+
+                    <h2 class="page-title grand-title">
+                        Keep Shining, Karunya! ✨
+                    </h2>
+
+                    <p class="page-subtitle">
+                        Wishing you a beautiful birthday! 🎂💖
+                    </p>
+
                 </div>
 
-                <!-- Final Grand Stage -->
+
                 <div class="final-grand-stage">
-                    
-                    <div class="final-photo-card" onclick="handleCardClick(event, this)">
-                        <!-- Surrounding decorations -->
-                        <div class="final-decor decor-crown">👑</div>
-                        <div class="final-decor decor-bow-l">🎀</div>
-                        <div class="final-decor decor-bow-r">🎀</div>
-                        <div class="final-decor decor-star-1">✨</div>
-                        <div class="final-decor decor-star-2">🌟</div>
-                        <div class="final-decor decor-flower-1">🌸</div>
-                        <div class="final-decor decor-flower-2">🌺</div>
-                        <div class="final-decor decor-bfly-1">🦋</div>
-                        <div class="final-decor decor-heart-1">💕</div>
+
+
+                    <div class="final-photo-card" onclick="handleCardClick(event,this)">
+
+                        <div class="final-decor decor-crown">
+                            👑
+                        </div>
+
+                        <div class="final-decor decor-bow-l">
+                            🎀
+                        </div>
+
+                        <div class="final-decor decor-bow-r">
+                            🎀
+                        </div>
+
+                        <div class="final-decor decor-star-1">
+                            ✨
+                        </div>
+
+                        <div class="final-decor decor-star-2">
+                            🌟
+                        </div>
+
+                        <div class="final-decor decor-flower-1">
+                            🌸
+                        </div>
+
+                        <div class="final-decor decor-flower-2">
+                            🌺
+                        </div>
+
+                        <div class="final-decor decor-bfly-1">
+                            🦋
+                        </div>
+
+                        <div class="final-decor decor-heart-1">
+                            💕
+                        </div>
+
 
                         <div class="final-photo-frame frame-royal-crown">
-                            <img src="Karunya8.jpeg" alt="Karunya Final Birthday Photo" class="final-img">
+
+                            <img src="Karunya8.jpeg" alt="Karunya" class="final-img">
+
                         </div>
+
                     </div>
 
-                    <!-- Celebration Confetti Burst Trigger -->
+
                     <div class="final-celebration-box">
-                        <button class="magic-btn confetti-burst-btn" id="confettiBurstBtn" onclick="triggerGrandConfetti()">
+
+                        <button class="magic-btn confetti-burst-btn" id="confettiBurstBtn"
+                            onclick="triggerGrandConfetti()">
+
                             🎉 Pop Birthday Confetti! 🎉
+
                         </button>
+
                     </div>
 
                 </div>
 
-                <!-- Page 8 Restart Button -->
+
                 <div class="action-footer page-nav-buttons">
-                    <button class="magic-btn secondary-btn" onclick="goToPage(7)">← Back</button>
-                    <button class="magic-btn restart-btn" onclick="goToPage(1)">✨ Start Again ✨</button>
+
+                    <button class="magic-btn secondary-btn" onclick="goToPage(7)">
+                        ← Back
+                    </button>
+
+                    <button class="magic-btn restart-btn" onclick="goToPage(1)">
+                        ✨ Start Again ✨
+                    </button>
+
                 </div>
 
             </div>
+
         </section>
 
     </main>
 
-    <!-- Custom Script -->
+
+
+    <!-- =========================================================
+     YOUR EXISTING JAVASCRIPT
+========================================================= -->
+
     <script src="script.js"></script>
+
+
+
+    <!-- =========================================================
+     🎵 MUSIC CONTROL
+========================================================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const music = document.getElementById("bgMusic");
+            const enterButton = document.getElementById("enterBtn");
+            const musicButton = document.getElementById("musicToggle");
+            const musicTooltip = document.getElementById("musicTooltip");
+
+
+            /* ==========================================
+               ENTER BUTTON
+            ========================================== */
+
+            if (enterButton) {
+
+                enterButton.addEventListener("click", function () {
+
+                    music.volume = 1.0;
+
+                    music.play()
+                        .then(function () {
+
+                            console.log("🎵 Birthday music started!");
+
+                            if (musicTooltip) {
+                                musicTooltip.textContent =
+                                    "Pause Music 🔇";
+                            }
+
+                            if (musicButton) {
+                                musicButton.classList.add("active");
+                            }
+
+                        })
+                        .catch(function (error) {
+
+                            console.log(
+                                "Music could not start:",
+                                error
+                            );
+
+                        });
+
+
+                    /* Go to Page 2 */
+
+                    if (typeof goToPage === "function") {
+
+                        goToPage(2);
+
+                    }
+
+                });
+
+            }
+
+
+            /* ==========================================
+               MUSIC PLAY / PAUSE BUTTON
+            ========================================== */
+
+            if (musicButton) {
+
+                musicButton.addEventListener("click", function () {
+
+                    if (music.paused) {
+
+                        music.play()
+                            .then(function () {
+
+                                musicButton.classList.add("active");
+
+                                if (musicTooltip) {
+
+                                    musicTooltip.textContent =
+                                        "Pause Music 🔇";
+
+                                }
+
+                            })
+                            .catch(function (error) {
+
+                                console.log(
+                                    "Music error:",
+                                    error
+                                );
+
+                            });
+
+                    }
+
+                    else {
+
+                        music.pause();
+
+                        musicButton.classList.remove("active");
+
+                        if (musicTooltip) {
+
+                            musicTooltip.textContent =
+                                "Play Music 🎵";
+
+                        }
+
+                    }
+
+                });
+
+            }
+
+
+            /* ==========================================
+               CHECK MUSIC FILE
+            ========================================== */
+
+            music.addEventListener("error", function () {
+
+                console.error(
+                    "❌ Music file could not be loaded."
+                );
+
+                console.error(
+                    "Check: music/birthday-song.mp3"
+                );
+
+            });
+
+
+            music.addEventListener("loadeddata", function () {
+
+                console.log(
+                    "✅ birthday-song.mp3 loaded successfully!"
+                );
+
+            });
+
+        });
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const music = document.getElementById("bgMusic");
+            const enterBtn = document.getElementById("enterBtn");
+            const musicBtn = document.getElementById("musicToggle");
+
+            console.log("Music element:", music);
+
+            // Start music when Enter is clicked
+            if (enterBtn) {
+                enterBtn.addEventListener("click", function () {
+
+                    music.currentTime = 0;
+                    music.volume = 1;
+
+                    music.play()
+                        .then(() => {
+                            console.log("🎵 MUSIC PLAYING");
+                        })
+                        .catch((error) => {
+                            console.error("❌ MUSIC ERROR:", error);
+                        });
+
+                    if (typeof goToPage === "function") {
+                        goToPage(2);
+                    }
+
+                });
+            }
+
+
+            // Music button
+            if (musicBtn) {
+                musicBtn.addEventListener("click", function () {
+
+                    if (music.paused) {
+
+                        music.play()
+                            .then(() => {
+                                console.log("🎵 Music playing");
+                            })
+                            .catch((error) => {
+                                console.error("❌ Music error:", error);
+                            });
+
+                    } else {
+
+                        music.pause();
+                        console.log("⏸️ Music paused");
+
+                    }
+
+                });
+            }
+
+
+            // Check whether file loads
+            music.addEventListener("loadeddata", function () {
+                console.log("✅ MP3 FILE LOADED");
+            });
+
+            music.addEventListener("error", function () {
+                console.error("❌ MP3 FILE NOT FOUND");
+                console.error("Expected file: ./music/birthday.mp3.mp3");
+            });
+
+        });
+    </script>
+
 </body>
+
 </html>
