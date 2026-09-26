@@ -1,0 +1,1252 @@
+/* ==========================================================================
+   ✨ KARUNYA'S 10TH BIRTHDAY MAGICAL SCRAPBOOK - STYLESHEET ✨
+   ========================================================================== */
+
+:root {
+    /* Dreamy Pastel Palette */
+    --bg-gradient: radial-gradient(ellipse at 50% 35%, #ffffff 0%, #fff0f6 25%, #ffe4ee 55%, #ffd1dc 80%, #fbcfe8 100%);
+    
+    --pink-baby: #ffb6c1;
+    --pink-blush: #ffd1dc;
+    --pink-soft: #fff0f5;
+    --pink-rose: #ff8da1;
+    --pink-deep: #e91e63;
+    --pink-dark: #c2185b;
+    
+    --lavender-light: #f3e5f5;
+    --lavender-soft: #e1bee7;
+    --lavender-deep: #8e24aa;
+    
+    --peach-light: #fff3e0;
+    --gold: #ffd700;
+    --gold-glow: rgba(255, 215, 0, 0.7);
+    
+    --white: #ffffff;
+    --text-color: #5c1d42;
+    --text-muted: rgba(92, 29, 66, 0.85);
+
+    --font-heading: 'Dancing Script', 'Caveat', cursive;
+    --font-handwritten: 'Caveat', cursive;
+    --font-cute: 'Fredoka', 'Outfit', sans-serif;
+    --font-main: 'Quicksand', sans-serif;
+
+    --shadow-soft: 0 8px 25px rgba(233, 30, 99, 0.2);
+    --shadow-glow: 0 0 30px rgba(255, 141, 161, 0.6);
+    --shadow-card: 0 12px 30px rgba(233, 30, 99, 0.18);
+    
+    --radius-xl: 32px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+    
+    --transition-smooth: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: var(--font-main);
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    line-height: 1.4;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ==========================================================================
+   🎀 BACKGROUND FLOATING DECORATIONS & CORNER ELEMENTS
+   ========================================================================== */
+
+/* Top Ribbon Bows */
+.corner-bow {
+    position: fixed;
+    z-index: 90;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    filter: drop-shadow(0 4px 10px rgba(233, 30, 99, 0.3));
+    pointer-events: none;
+    animation: swingBow 4s ease-in-out infinite alternate;
+}
+.bow-top-left { top: -4px; left: 12px; transform: rotate(-22deg); }
+.bow-top-right { top: -4px; right: 12px; transform: rotate(22deg); }
+
+@keyframes swingBow {
+    0% { transform: rotate(-22deg) translateY(0); }
+    100% { transform: rotate(-15deg) translateY(5px); }
+}
+
+/* Bottom Fluffy Cloud Corners */
+.cloud-corner {
+    position: fixed;
+    bottom: -6px;
+    z-index: 5;
+    pointer-events: none;
+    filter: drop-shadow(0 -4px 12px rgba(255, 182, 193, 0.5));
+}
+.cloud-bottom-left { left: 12px; font-size: clamp(2.8rem, 5vw, 4rem); }
+.cloud-bottom-right { right: 12px; font-size: clamp(2.8rem, 5vw, 4rem); }
+
+/* Ambient Glow Background Orbs */
+.ambient-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+    animation: pulseOrb 8s ease-in-out infinite alternate;
+}
+.bg-orb-1 {
+    top: -80px;
+    left: -80px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, #ffb6c1 0%, #ff8da1 60%, transparent 100%);
+}
+.bg-orb-2 {
+    bottom: -100px;
+    right: -80px;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, #e1bee7 0%, #ffb6c1 60%, transparent 100%);
+    animation-delay: 3s;
+}
+.bg-orb-3 {
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(255, 215, 0, 0.3) 45%, transparent 70%);
+    animation-delay: 5s;
+}
+
+@keyframes pulseOrb {
+    0% { transform: scale(1) translate(0, 0); opacity: 0.45; }
+    100% { transform: scale(1.15) translate(20px, -15px); opacity: 0.7; }
+}
+
+/* Background Canvas */
+#magicCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Page Transition Overlay */
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,209,220,0.9) 100%);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.page-transition-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.transition-sparkle-burst {
+    display: flex;
+    gap: 20px;
+    font-size: 3.5rem;
+    animation: bounceTransitionIcons 0.6s ease infinite alternate;
+}
+
+@keyframes bounceTransitionIcons {
+    0% { transform: scale(0.8) translateY(0); }
+    100% { transform: scale(1.2) translateY(-15px); }
+}
+
+/* ==========================================================================
+   🎵 TOP CONTROLS BAR (MUSIC & SPARKLE TOGGLES)
+   ========================================================================== */
+.top-nav-bar {
+    position: fixed;
+    top: 14px;
+    right: 20px;
+    z-index: 100;
+}
+
+.magic-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    border: 2px solid var(--pink-baby);
+    color: var(--pink-deep);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 16px rgba(233, 30, 99, 0.2);
+    backdrop-filter: blur(8px);
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.control-btn:hover {
+    transform: scale(1.12) rotate(8deg);
+    background: var(--pink-deep);
+    color: var(--white);
+}
+
+.control-btn.active {
+    background: linear-gradient(135deg, var(--pink-rose), var(--pink-deep));
+    color: var(--white);
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.4);
+}
+
+.btn-tooltip {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-color);
+    color: var(--white);
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    font-weight: 600;
+}
+
+.control-btn:hover .btn-tooltip {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   ✨ MAGIC BUTTONS & COMMON TYPOGRAPHY
+   ========================================================================== */
+.magic-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    font-family: var(--font-cute);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    color: var(--white);
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #e91e63 100%);
+    border: 2.5px solid #ffffff;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    user-select: none;
+}
+
+.magic-btn:hover {
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 12px 28px rgba(233, 30, 99, 0.45), 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.magic-btn.secondary-btn {
+    background: linear-gradient(135deg, #e1bee7 0%, #ab47bc 100%);
+}
+
+.text-center { text-align: center; }
+
+.header-crown-icon {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: -4px;
+    filter: drop-shadow(0 3px 8px rgba(255, 215, 0, 0.7));
+    animation: floatCrown 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatCrown {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-4px) scale(1.08); }
+}
+
+.page-title {
+    font-family: 'Dancing Script', 'Caveat', cursive;
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--pink-dark);
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.95), 0 0 20px rgba(255, 182, 193, 0.8);
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.header-ribbon-swash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 2px 0;
+    color: var(--pink-deep);
+}
+
+.swash-line {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    font-family: var(--font-cute);
+}
+
+.swash-bow {
+    font-size: 1.1rem;
+    filter: drop-shadow(0 2px 5px rgba(233, 30, 99, 0.4));
+}
+
+.page-subtitle {
+    font-family: var(--font-handwritten);
+    font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+    color: var(--pink-deep);
+    font-weight: 700;
+    text-shadow: 0 2px 6px rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   🏰 APP SCENES CONTAINER (FULL SCREEN PAGE FIT)
+   ========================================================================== */
+.app-scenes {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.scene-page {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding: 15px 16px;
+}
+
+.scene-page.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 25;
+    animation: fadeInScene 0.45s ease forwards;
+}
+
+@keyframes fadeInScene {
+    0% { opacity: 0; transform: scale(0.97); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.page-inner {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.action-footer {
+    width: 100%;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* ==========================================================================
+   ✨ PAGE 1 — MAGICAL WELCOME
+   ========================================================================== */
+.welcome-title {
+    font-size: clamp(2.6rem, 5.5vw, 4rem);
+}
+
+.welcome-photo-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+/* Storybook non-circular photo frame */
+.decorative-storybook-frame {
+    position: relative;
+    padding: 14px;
+    background: linear-gradient(135deg, #ffffff 0%, #fff0f5 100%);
+    border-radius: 28px;
+    border: 4px solid var(--white);
+    outline: 4px solid var(--pink-baby);
+    box-shadow: 0 15px 40px rgba(233, 30, 99, 0.25), 0 0 30px rgba(255, 215, 0, 0.4);
+    transition: var(--transition-smooth);
+}
+
+.decorative-storybook-frame:hover {
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 20px 50px rgba(233, 30, 99, 0.35), 0 0 40px rgba(255, 215, 0, 0.6);
+}
+
+.photo-container {
+    width: min(340px, 60vw);
+    height: min(420px, 48vh);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.welcome-main-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    transition: transform 0.6s ease;
+}
+
+.decorative-storybook-frame:hover .welcome-main-photo {
+    transform: scale(1.05);
+}
+
+/* Corner & Floating frame accents */
+.frame-decor {
+    position: absolute;
+    z-index: 10;
+    font-size: 2rem;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+    pointer-events: none;
+}
+.decor-tl { top: -16px; left: -14px; transform: rotate(-20deg); }
+.decor-tr { top: -16px; right: -14px; font-size: 2.2rem; }
+.decor-bl { bottom: -14px; left: -14px; font-size: 2.2rem; }
+.decor-br { bottom: -16px; right: -14px; transform: rotate(15deg); }
+.decor-floating-heart { top: 40%; left: -30px; font-size: 2.2rem; animation: floatTiny 3s ease-in-out infinite alternate; }
+.decor-floating-bfly { top: 30%; right: -30px; font-size: 2.4rem; animation: floatTiny 3.5s ease-in-out infinite alternate 1s; }
+
+@keyframes floatTiny {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-10px) rotate(8deg); }
+}
+
+/* ==========================================================================
+   📸 PAGE 2 — KARUNYA'S HAPPY MOMENTS (SCRAPBOOK GALLERY)
+   ========================================================================== */
+.floating-photo-bubbles-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.photo-bubble {
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.7), 0 0 35px rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    transition: transform 0.4s ease;
+}
+
+.photo-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.bubble-1 { width: 65px; height: 65px; top: 10%; left: 2%; animation: floatBubble 5s ease-in-out infinite alternate; }
+.bubble-2 { width: 70px; height: 70px; top: 12%; right: 2%; animation: floatBubble 6s ease-in-out infinite alternate 1s; }
+.bubble-3 { width: 60px; height: 60px; bottom: 18%; right: 2%; animation: floatBubble 5.5s ease-in-out infinite alternate 2s; }
+.bubble-4 { width: 60px; height: 60px; bottom: 20%; left: 2%; animation: floatBubble 6.5s ease-in-out infinite alternate 1.5s; }
+
+@keyframes floatBubble {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    100% { transform: translateY(-14px) scale(1.08) rotate(6deg); }
+}
+
+.scrapbook-gallery-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.gallery-grid-8 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px 14px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* Scrapbook Cards */
+.scrapbook-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 8px;
+    position: relative;
+    box-shadow: 0 8px 22px rgba(233, 30, 99, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Asymmetric Photo Card Tilts */
+.card-tilt-1 { transform: rotate(-2.5deg); }
+.card-tilt-2 { transform: rotate(2deg); }
+.card-tilt-3 { transform: rotate(-1.5deg); }
+.card-tilt-4 { transform: rotate(2deg); }
+.card-tilt-5 { transform: rotate(-2deg); }
+.card-tilt-6 { transform: rotate(1.5deg); }
+.card-tilt-7 { transform: rotate(-2deg); }
+.card-tilt-8 { transform: rotate(2deg); }
+
+.scrapbook-card:hover {
+    transform: scale(1.06) rotate(0deg) translateY(-5px) !important;
+    box-shadow: 0 15px 35px rgba(233, 30, 99, 0.3), 0 0 25px rgba(255, 215, 0, 0.5);
+    border-color: #ffffff;
+    z-index: 15;
+}
+
+/* Click Sparkle Pulse Animation (No Lightbox enlargement) */
+.scrapbook-card.card-sparkle-active {
+    animation: cardSparkleBounce 0.55s ease forwards;
+}
+
+@keyframes cardSparkleBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08) translateY(-8px); box-shadow: 0 0 35px #e91e63, 0 0 25px #ffd700; }
+    100% { transform: scale(1.02); }
+}
+
+.scrapbook-photo-frame {
+    position: relative;
+    width: 100%;
+    height: clamp(120px, 20vh, 160px);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.scrapbook-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Individual Image Crops */
+.img-crop-1 { object-position: center 30%; }
+.img-crop-2 { object-position: center 35%; }
+.img-crop-3 { object-position: center 40%; }
+.img-crop-4 { object-position: center 35%; }
+.img-crop-5 { object-position: center 30%; }
+.img-crop-6 { object-position: center 30%; }
+.img-crop-7 { object-position: center 40%; }
+.img-crop-8 { object-position: center 40%; }
+
+/* Creative Frame Variant Outlines */
+.frame-scallop-pink {
+    border: 3.5px solid #ffffff;
+    outline: 3px solid var(--pink-baby);
+    box-shadow: 0 6px 16px rgba(255, 182, 193, 0.5);
+}
+
+.frame-flower-blossom {
+    border: 3.5px solid #ffffff;
+    outline: 3px solid #ffc2d1;
+    box-shadow: 0 6px 16px rgba(255, 194, 209, 0.5);
+}
+
+.frame-golden-starburst {
+    border: 3.5px solid #ffffff;
+    outline: 3px solid #ffe082;
+    box-shadow: 0 6px 16px rgba(255, 224, 130, 0.6);
+}
+
+.frame-fairy-ribbon {
+    border: 3.5px solid #ffffff;
+    outline: 3px solid #f8bbd0;
+    box-shadow: 0 6px 16px rgba(248, 187, 208, 0.5);
+}
+
+.frame-lavender-lace {
+    border: 3.5px solid #ffffff;
+    outline: 3px solid #e1bee7;
+    box-shadow: 0 6px 16px rgba(225, 190, 231, 0.5);
+}
+
+.frame-sparkle-glitter {
+    border: 3.5px solid #ffffff;
+    outline: 3px solid #f48fb1;
+    box-shadow: 0 6px 16px rgba(244, 143, 177, 0.5);
+}
+
+.frame-royal-crown {
+    border: 3.5px solid #ffffff;
+    outline: 3px solid #ffe082;
+    box-shadow: 0 6px 16px rgba(255, 224, 130, 0.6);
+}
+
+.frame-sweet-heart {
+    border: 3.5px solid #ffffff;
+    outline: 3px solid #ffb2c9;
+    box-shadow: 0 6px 16px rgba(255, 178, 201, 0.5);
+}
+
+.card-decor {
+    position: absolute;
+    z-index: 10;
+    font-size: 1.3rem;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.decor-ribbon-tl { top: -10px; left: -8px; transform: rotate(-20deg); }
+.decor-ribbon-tr { top: -10px; right: -8px; transform: rotate(20deg); }
+.decor-ribbon-bl { bottom: -8px; left: -8px; transform: rotate(-15deg); }
+.decor-flower-br { bottom: -6px; right: -6px; }
+.decor-flower-bl { bottom: -6px; left: -6px; }
+.decor-flower-tl { top: -8px; left: -6px; }
+.decor-flower-tr { top: -8px; right: -6px; }
+.decor-star-tr { top: -8px; right: -6px; }
+.decor-star-tl { top: -8px; left: -6px; }
+.decor-star-bl { bottom: -6px; left: -6px; }
+.decor-bow-tc { top: -12px; left: 50%; transform: translateX(-50%); }
+.decor-crown-tc { top: -12px; left: 50%; transform: translateX(-50%); }
+.decor-bfly-tr { top: -10px; right: -8px; }
+.decor-bfly-bl { bottom: -6px; left: -8px; }
+.decor-heart-br { bottom: -6px; right: -6px; }
+
+/* ==========================================================================
+   🌸 PAGE 3 — LITTLE ME (CHILDHOOD SCRAPBOOK)
+   ========================================================================== */
+.childhood-scrapbook-stage {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0;
+}
+
+.decor-teddy-cloud {
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.teddy-img {
+    width: clamp(100px, 15vw, 150px);
+    height: clamp(100px, 15vw, 150px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffffff;
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.6);
+}
+
+.cloud-speech {
+    background: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-family: var(--font-handwritten);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--pink-deep);
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.childhood-photos-trio {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Polaroid Photo Cards */
+.polaroid-card {
+    background: #ffffff;
+    padding: 12px 12px 18px 12px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(233, 30, 99, 0.18);
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    width: clamp(180px, 25vw, 240px);
+}
+
+.polaroid-1 { transform: rotate(-3deg); }
+.polaroid-2 { transform: rotate(1deg) translateY(-8px); }
+.polaroid-3 { transform: rotate(3deg); }
+
+.polaroid-card:hover {
+    transform: scale(1.06) rotate(0deg) translateY(-8px);
+    box-shadow: 0 18px 40px rgba(233, 30, 99, 0.3), 0 0 25px rgba(255, 215, 0, 0.5);
+    z-index: 15;
+}
+
+.polaroid-frame {
+    width: 100%;
+    height: clamp(180px, 28vh, 240px);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8f8f8;
+}
+
+.polaroid-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+.polaroid-caption {
+    font-family: var(--font-handwritten);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--pink-dark);
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Tape strips for polaroid feel */
+.tape-strip {
+    position: absolute;
+    width: 60px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px dashed rgba(233, 30, 99, 0.3);
+    z-index: 12;
+}
+
+.tape-top-left { top: -10px; left: 15px; transform: rotate(-12deg); }
+.tape-top-center { top: -10px; left: 50%; transform: translateX(-50%) rotate(2deg); }
+.tape-top-right { top: -10px; right: 15px; transform: rotate(10deg); }
+
+.floating-accents {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 2rem;
+}
+
+.acc-item {
+    animation: floatTiny 3s ease-in-out infinite alternate;
+}
+.acc-2 { animation-delay: 0.5s; }
+.acc-3 { animation-delay: 1s; }
+.acc-4 { animation-delay: 1.5s; }
+.acc-5 { animation-delay: 2s; }
+
+/* ==========================================================================
+   💕 PAGE 4 — SPECIAL MOMENTS
+   ========================================================================== */
+.special-moments-stage {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 10px 0;
+}
+
+.featured-card {
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+.side-card {
+    width: clamp(200px, 26vw, 260px);
+}
+
+.left-card { transform: rotate(-2deg); }
+.right-card { transform: rotate(2deg); }
+
+.main-glowing-card {
+    width: clamp(260px, 34vw, 340px);
+    transform: translateY(-8px);
+    z-index: 10;
+}
+
+.featured-card:hover {
+    transform: scale(1.05) translateY(-10px) !important;
+    z-index: 20;
+}
+
+.featured-photo-wrapper {
+    width: 100%;
+    height: clamp(200px, 32vh, 320px);
+    border-radius: 22px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.main-glowing-card .featured-photo-wrapper {
+    height: clamp(250px, 40vh, 380px);
+}
+
+.featured-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+}
+
+.frame-glowing-magic {
+    border: 5px solid #ffffff;
+    outline: 4px solid var(--pink-rose);
+    box-shadow: 0 0 35px rgba(233, 30, 99, 0.4), 0 0 25px rgba(255, 215, 0, 0.6);
+    animation: glowPulseFrame 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulseFrame {
+    0% { box-shadow: 0 0 25px rgba(233, 30, 99, 0.4), 0 0 20px rgba(255, 215, 0, 0.5); }
+    100% { box-shadow: 0 0 45px rgba(233, 30, 99, 0.6), 0 0 35px rgba(255, 215, 0, 0.8); }
+}
+
+.moment-tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 18px;
+    background: #ffffff;
+    border-radius: var(--radius-full);
+    font-family: var(--font-cute);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--pink-deep);
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.18);
+}
+
+.center-tag {
+    font-size: 1.25rem;
+    background: linear-gradient(135deg, var(--pink-soft), #ffffff);
+    border: 2px solid var(--pink-baby);
+}
+
+/* ==========================================================================
+   🌈 PAGE 5 — MY HAPPY WORLD
+   ========================================================================== */
+.happy-world-stage {
+    flex: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    padding: 10px 0;
+}
+
+.world-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 22px;
+    padding: 12px;
+    text-align: center;
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.15);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.world-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(233, 30, 99, 0.3), 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.world-icon-wrap {
+    width: 100%;
+    height: clamp(140px, 24vh, 200px);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.unicorn-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-photo .scrapbook-photo-frame {
+    height: clamp(140px, 24vh, 200px);
+}
+
+.card-toys-cluster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(135deg, #fff0f5 0%, #f3e5f5 100%);
+}
+
+.cluster-emojis {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 2.2rem;
+    padding: 15px 5px;
+}
+
+.c-item {
+    animation: floatTiny 3s ease-in-out infinite alternate;
+}
+
+.world-label {
+    font-family: var(--font-cute);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--pink-dark);
+    margin-top: 8px;
+}
+
+/* ==========================================================================
+   🦋 PAGE 6 — MY DREAMS
+   ========================================================================== */
+.dreamland-stage {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0;
+}
+
+.dream-cloud {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
+    padding: 14px 32px;
+    border: 3px solid #ffffff;
+    box-shadow: 0 10px 30px rgba(233, 30, 99, 0.15), 0 0 20px rgba(255, 255, 255, 0.9);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.cloud-1 { transform: translateX(-80px); }
+.cloud-2 { transform: translateX(80px); }
+.cloud-3 { transform: translateX(-40px); }
+
+.cloud-sparkle { font-size: 1.5rem; }
+
+.dream-text {
+    font-family: var(--font-handwritten);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--pink-dark);
+}
+
+.fairytale-castle-card {
+    margin-top: 15px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px 40px;
+    border-radius: 30px;
+    border: 3px solid #ffffff;
+    box-shadow: 0 12px 35px rgba(233, 30, 99, 0.15);
+}
+
+.castle-graphic {
+    font-size: 4.5rem;
+    filter: drop-shadow(0 6px 15px rgba(233, 30, 99, 0.3));
+    animation: floatCrown 4s ease-in-out infinite alternate;
+}
+
+.moon-graphic {
+    font-size: 2.2rem;
+    margin-top: -10px;
+}
+
+.rainbow-arc {
+    font-size: 2.5rem;
+    margin-top: 5px;
+}
+
+.castle-stars {
+    font-size: 1.8rem;
+    margin-top: 8px;
+    word-spacing: 12px;
+}
+
+/* ==========================================================================
+   💌 PAGE 7 — SPECIAL BIRTHDAY MESSAGE (ENVELOPE & LETTER)
+   ========================================================================== */
+.birthday-letter-stage {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.magic-envelope-card {
+    width: min(580px, 90vw);
+    background: linear-gradient(135deg, #ffffff 0%, #fff0f5 100%);
+    border-radius: 24px;
+    border: 4px solid var(--white);
+    outline: 4px solid var(--pink-baby);
+    box-shadow: 0 15px 40px rgba(233, 30, 99, 0.25), 0 0 30px rgba(255, 215, 0, 0.4);
+    padding: 24px;
+    position: relative;
+}
+
+.envelope-top-seal {
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--pink-deep);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.seal-icon { font-size: 1.4rem; color: #ffffff; }
+
+.letter-paper {
+    background: #fffcf8;
+    border-radius: 16px;
+    border: 2px dashed var(--pink-baby);
+    padding: 20px 24px;
+    box-shadow: inset 0 0 12px rgba(233, 30, 99, 0.05);
+}
+
+.letter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--pink-blush);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+}
+
+.letter-stamp {
+    font-family: var(--font-cute);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--pink-deep);
+    background: var(--pink-soft);
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+.letter-header h3 {
+    font-family: var(--font-handwritten);
+    font-size: 1.8rem;
+    color: var(--pink-dark);
+}
+
+.letter-body-editable {
+    font-family: var(--font-handwritten);
+    font-size: 1.45rem;
+    line-height: 1.5;
+    color: #4a148c;
+    min-height: 120px;
+    outline: none;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 240, 245, 0.4);
+    white-space: pre-wrap;
+    transition: background 0.3s ease;
+}
+
+.letter-body-editable:focus {
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
+}
+
+.letter-footer {
+    text-align: right;
+    margin-top: 14px;
+    font-family: var(--font-handwritten);
+    font-size: 1.4rem;
+    color: var(--pink-deep);
+    font-weight: 700;
+}
+
+.letter-edit-hint {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--pink-deep);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   🎀 PAGE 8 — FINAL PAGE
+   ========================================================================== */
+.grand-title {
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
+}
+
+.final-grand-stage {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0;
+}
+
+.final-photo-card {
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.final-photo-card:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+.final-photo-frame {
+    width: clamp(240px, 32vw, 320px);
+    height: clamp(280px, 42vh, 400px);
+    border-radius: 24px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.final-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+}
+
+.final-decor {
+    position: absolute;
+    z-index: 15;
+    font-size: 2.2rem;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    pointer-events: none;
+}
+
+.decor-crown { top: -20px; left: 50%; transform: translateX(-50%); font-size: 2.6rem; }
+.decor-bow-l { top: -14px; left: -14px; transform: rotate(-25deg); }
+.decor-bow-r { top: -14px; right: -14px; transform: rotate(25deg); }
+.decor-star-1 { top: 30%; left: -35px; }
+.decor-star-2 { top: 30%; right: -35px; }
+.decor-flower-1 { bottom: -12px; left: -14px; }
+.decor-flower-2 { bottom: -12px; right: -14px; }
+.decor-bfly-1 { top: 60%; right: -35px; animation: floatTiny 3s ease-in-out infinite alternate; }
+.decor-heart-1 { top: 60%; left: -35px; animation: floatTiny 3.5s ease-in-out infinite alternate; }
+
+.final-celebration-box {
+    margin-top: 16px;
+}
+
+.confetti-burst-btn {
+    font-size: 1.35rem;
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #ff4081 0%, #ab47bc 100%);
+    box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4), 0 0 25px rgba(255, 215, 0, 0.6);
+}
+
+.restart-btn {
+    background: linear-gradient(135deg, #00c853 0%, #ff4081 100%);
+}
+
+/* ==========================================================================
+   📱 RESPONSIVE ADJUSTMENTS FOR MOBILE & TABLETS
+   ========================================================================== */
+@media (max-width: 900px) {
+    .gallery-grid-8 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px 10px;
+    }
+
+    .scrapbook-photo-frame {
+        height: clamp(100px, 16vh, 130px);
+    }
+
+    .special-moments-stage {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .side-card { width: clamp(160px, 60vw, 220px); }
+    .main-glowing-card { width: clamp(200px, 70vw, 260px); }
+
+    .happy-world-stage {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .childhood-photos-trio {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .decor-teddy-cloud, .floating-accents {
+        display: none;
+    }
+
+    .polaroid-card {
+        width: clamp(160px, 70vw, 220px);
+    }
+
+    .polaroid-frame {
+        height: clamp(140px, 20vh, 180px);
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "karunyas-birthday",
+  "version": "1.0.0",
+  "description": "Magical 10th Birthday Celebration Website for Karunya",
+  "scripts": {
+    "dev": "npx -y serve .",
+    "start": "npx -y serve ."
+  }
+}
